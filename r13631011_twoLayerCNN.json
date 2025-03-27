@@ -1,0 +1,70 @@
+{
+    "dataType":"cv",
+    "projectType":"classification",
+    "algoName":"r13631011_twoLayerCNN",
+    "description": "Two layers convolutional neural network.",
+    "lib":"keras",
+    "param":[
+        {
+            "name":"hidden_kernel_size",
+            "description":"The size of the convolutional filter (kernel) used in hidden layers, determining the receptive field for feature extraction.",
+            "type":"int",
+            "lowerBound":3,
+            "upperBound":7,
+            "default":3
+        },
+        {
+            "name":"hidden_activation",
+            "description":"Activation function used in hidden layers to introduce non-linearity, enabling the model to learn complex features.",
+            "type":"enum",
+            "list":["linear","tanh","relu","elu","softmax","selu"],
+            "default":"relu"
+        },
+        {
+            "name":"optimizer",
+            "description":"The algorithm used to adjust model weights during training by minimizing the loss function",
+            "type":"enum",
+            "list":["sgd","rmsprop","adagrad","adam"],
+            "default":"adam"
+        },
+        {
+            "name":"dropout_rate",
+            "description":"The proportion of neurons randomly set to zero during training to prevent overfitting and improve model generalization.",
+            "type":"float",
+            "lowerBound":0.0,
+            "upperBound":1.0,
+            "default":0.25
+        },
+        {
+            "name":"epochs",
+            "description":"The number of complete passes through the entire training dataset during the training process.",
+            "type":"int",
+            "lowerBound":5,
+            "upperBound":200,
+            "default":50
+        },
+        {
+            "name":"batch_size",
+            "description":"The number of training samples processed together before updating the model's weights during one training iteration.",
+            "type":"int",
+            "lowerBound":4,
+            "upperBound":128,
+            "default":32
+        }
+    ],
+    "input":[
+        {
+            "name": "X",
+            "description": "input data (image)",
+            "type":"path",
+            "amount":"single"
+        }
+    ],
+    "output":[
+        {
+            "name": "Y",
+            "description": "output data (label)",
+            "type":"classifiable"
+        }
+    ]
+}
